@@ -1,0 +1,16 @@
+---
+version: "3.7"
+
+services:
+  # Development service definition
+  # start with docker-compose up --build
+  tweetarchive-viewer:
+    build:
+      context: .
+      target: 'develop-stage'
+    ports:
+    - '8080:8080'
+    volumes:
+    - '.:/app'
+    - './../tweetarchive/data/archive/:/archive'
+    command: /bin/sh -c "npm install && quasar dev"
